@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhniqyttriecf"]
+[gd_scene load_steps=13 format=3 uid="uid://dhniqyttriecf"]
 
 [ext_resource type="Script" path="res://item_spawn.gd" id="1_o3hm0"]
 [ext_resource type="Script" path="res://playerscript.gd" id="1_x517i"]
@@ -32,8 +32,6 @@ glow_enabled = true
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hltpp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6drjx"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pwll2"]
 
 [node name="World" type="Node3D"]
 
@@ -97,9 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61976, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
 [node name="Camera3D" type="Camera3D" parent="Player/head"]
-
-[node name="shape_cast_drop" type="ShapeCast3D" parent="Player/head/Camera3D"]
-shape = SubResource("BoxShape3D_pwll2")
 
 [node name="raycast_pickup" type="RayCast3D" parent="Player/head/Camera3D"]
 target_position = Vector3(0, 0, -3)

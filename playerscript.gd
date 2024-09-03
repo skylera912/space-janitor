@@ -36,8 +36,6 @@ var item_orientations = {
 	"item2": Transform3D(Basis(Quaternion(Vector3(0, 1, 0), deg_to_rad(45))), Vector3(0.1, -0.1, 0))
 }
 
-var item_to_spawn
-var item_to_drop
 
 #called to script
 @onready var head = $head
@@ -93,21 +91,15 @@ func drop():
 		new_basis.x = camera_basis.x.normalized()  # X axis relative to the camera
 		new_basis.z = camera_basis.z.normalized()  # Z axis relative to the camera
 		held_item.global_transform.basis = new_basis
-	if shapecast_drop.is_colliding():
 		var base_name = held_item.name.split("_")[0]
 		var transform_to_apply = item_orientations[base_name]
 		held_item.global_transform = hands.global_transform * transform_to_apply
 		held_item.linear_velocity = velocity
-	else:
-		var force = -18
-		var player_rotation = camera.global_transform.basis.z
 		var count = item_spawner.get_child_count()
 		var last_child = item_spawner.get_child(count -1)
+		last_child.linear_velocity
 		print("count", count)
 		print("last_child:", last_child)
-		last_child.apply_central_impulse(player_rotation * force + Vector3(0, 3.5, 0))
-		var base_name = held_item.name.split("_")[0]
-		var transform_to_apply = item_orientations[base_name]
 		held_item.global_transform = hands.global_transform * transform_to_apply
 		
 		print("THROW")
